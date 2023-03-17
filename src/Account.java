@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 // Нам нужен класс "Учётная запись"
 
 //Задача 1
@@ -20,8 +21,11 @@ public class Account {
   private int reputation;
 
   // с именем и электронной почтой, которые задаются при создании.
-  public Account(String name, String email) {
+  public Account(String name, String email) throws InvalidEmail{
     this.name = name;
+    if (email.indexOf('@') == -1) {
+      throw new InvalidEmail(email);
+    }
     this.email = email;
     reputation = 0;
   }

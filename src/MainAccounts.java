@@ -50,10 +50,18 @@ public class MainAccounts {
 
   // прочитать учётную запись
   public static Account readAccount(BufferedReader br) throws IOException {
-    System.out.print("Введите имя: ");
-    String name = br.readLine();
-    System.out.print("Введите e-mail: ");
-    String email = br.readLine();
-    return new Account(name, email);
+
+      System.out.print("Введите имя: ");
+      String name = br.readLine();
+      System.out.print("Введите e-mail: ");
+      String email = br.readLine();
+    try {
+      return new Account(name, email);
+    } catch (InvalidEmail e) {
+      throw new RuntimeException(e);
+    }
   }
 }
+
+
+

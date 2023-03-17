@@ -15,4 +15,24 @@ public class Rectangle {
     this.width = width;
     this.length = length;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (!(obj instanceof Rectangle other)) {
+      return false; //
+    }
+    if (this.length == other.length && this.width == other.width) {
+      return true;
+    } else if (this.length == other.width && this.width == other.length) {
+      return true;
+    }
+    return false;
+  }
+
+  public int hashCode() {
+    return 17 * width * length;
+  }
 }
